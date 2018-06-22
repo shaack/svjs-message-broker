@@ -8,7 +8,7 @@ It's a simple message broker.
 
 - Has `Topics`
 - A `Subscriber` (callback) can subscribe to a `Topic`
-- Can publish messages (data) to `Subscribers`
+- Can publish asynchronous messages (data) to `Subscribers`
 
 ## Usage
 
