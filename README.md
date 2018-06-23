@@ -34,12 +34,12 @@ messageBroker.publish(new testMessage("Hello"))
 
 ### Unsubscribe
 
-Unsubscribe one subscriber for a message type
+Unsubscribe a subscriber for a message type
 ```javascript
 messageBroker.unsubscribe(testMessage, subscriber)
 ```
 
-Unsubscribe all subscriber for a message type
+Unsubscribe all subscribers for a message type
 ```javascript
 messageBroker.unsubscribe(testMessage)
 ```
