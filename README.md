@@ -2,13 +2,12 @@
 
 ES6 component to provide a subscriber and publish pattern for in app communication with loose bindung.
 
-It's a simple message broker.
+It's just a simple message broker and it works.
 
 ## MessageBroker
 
-- Has `Topics`
-- A `Subscriber` (callback) can subscribe to a `Topic`
-- Can publish asynchronous messages (data) to `Subscribers`
+- A `Subscriber` (callback) can subscribe to a `message type` (topic)
+- The `MessageBroker` can publish asynchronous messages with data to `Subscribers`
 
 ## Usage
 
@@ -19,27 +18,30 @@ import {MessageBroker} from "./src/svjs-message-broker/MessageBroker.js"
 
 const messageBroker = new MessageBroker()
 
-const subscriber = function(data) {
-    // asynchronously called on publish()  
+const testMessage = function(data) {
+    this.data = data
+}
+const subscriber = function(message) {
+    console.log(message.data)
 }
 
-// subscribe to 'testTopic'
-messageBroker.subscribe("testTopic", subscriber)
+// subscribe to message type/topic 'testMessage'
+messageBroker.subscribe(testMessage, subscriber)
 
-// publish a message in 'testTopic'
-messageBroker.publish("testTopic", { /* data */ })
+// publish a message of type 'testMessage'
+messageBroker.publish(new testMessage("Hello"))
 ```
 
 ### Unsubscribe
 
-Unsubscribe one subscriber for a topic
+Unsubscribe one subscriber for a message type
 ```javascript
-messageBroker.unsubscribe("testTopic", subscriber)
+messageBroker.unsubscribe(testMessage, subscriber)
 ```
 
-Unsubscribe all subscriber for a topic
+Unsubscribe all subscriber for a message type
 ```javascript
-messageBroker.unsubscribe("testTopic")
+messageBroker.unsubscribe(testMessage)
 ```
 
 Unsubscribe all topic for a subscriber
@@ -48,6 +50,8 @@ messageBroker.subscribe(null, subscriber)
 ```
 
 ## Test
+
+Run Mocha tests with
 
 ```bash
 npm test

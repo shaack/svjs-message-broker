@@ -43,11 +43,11 @@ export class MessageBroker {
         }
     }
 
-    publish(topic, data = null) {
-        if (this.topics[topic]) {
-            this.topics[topic].forEach(function (subscriber) {
+    publish(message) {
+        if (this.topics[message.constructor]) {
+            this.topics[message.constructor].forEach(function (subscriber) {
                 setTimeout(function () {
-                    subscriber(data)
+                    subscriber(message)
                 })
             })
         }
