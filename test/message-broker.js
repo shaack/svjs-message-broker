@@ -19,7 +19,7 @@ describe("MessageBroker", function() {
 
     it("should publish a message to a subscriber", function (done) {
         const messageBroker = new MessageBroker()
-        const testMessage = function() {
+        const testMessage = function testMessage() {
         }
         const subscriber = function(message) {
             assert.equal(message.constructor, testMessage)
@@ -33,7 +33,7 @@ describe("MessageBroker", function() {
     it("sould publis a message with data to a subscriber", function(done) {
         const messageBroker = new MessageBroker()
 
-        const testMessage = function(data) {
+        const testMessage = function testMessage(data) {
             // noinspection JSUnusedGlobalSymbols
             this.data = data
         }
@@ -50,11 +50,11 @@ describe("MessageBroker", function() {
     it("should subscribe multiple subscribers and unsubscribe one for a topic", function (done) {
         const messageBroker = new MessageBroker()
 
-        const testMessage1 = function(data) {
+        const testMessage1 = function testMessage1(data) {
             // noinspection JSUnusedGlobalSymbols
             this.data = data
         }
-        const testMessage2 = function() {
+        const testMessage2 = function testMessage2() {
         }
 
         const subscriber1 = function() {
@@ -90,9 +90,9 @@ describe("MessageBroker", function() {
     it("should unsubscribe all callbacks for a topic", function(done) {
         const messageBroker = new MessageBroker()
 
-        const testMessage1 = function() {
+        const testMessage1 = function testMessage1() {
         }
-        const testMessage2 = function() {
+        const testMessage2 = function testMessage2() {
         }
 
         const subscriber1 = function() {
@@ -124,9 +124,9 @@ describe("MessageBroker", function() {
     it("should unsubscribe all topics for a callback", function(done) {
         const messageBroker = new MessageBroker()
 
-        const testMessage1 = function() {
+        const testMessage1 = function testMessage1() {
         }
-        const testMessage2 = function() {
+        const testMessage2 = function testMessage2() {
         }
 
         const subscriber1 = function() {
