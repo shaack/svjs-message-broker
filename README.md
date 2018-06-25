@@ -18,7 +18,7 @@ import {MessageBroker} from "./src/svjs-message-broker/MessageBroker.js"
 
 const messageBroker = new MessageBroker()
 
-const testMessage = function(data) {
+const testMessage = function testMessage(data) {
     this.data = data
 }
 const subscriber = function(message) {
