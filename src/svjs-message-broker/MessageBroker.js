@@ -43,12 +43,16 @@ export class MessageBroker {
         }
     }
 
-    publish(message) {
+    publish(message, async = true) {
         if (this.topics[message.constructor]) {
             this.topics[message.constructor].forEach(function (subscriber) {
-                setTimeout(function () {
+                if(async) {
+                    setTimeout(function () {
+                        subscriber(message)
+                    })
+                } else {
                     subscriber(message)
-                })
+                }
             })
         }
     }
